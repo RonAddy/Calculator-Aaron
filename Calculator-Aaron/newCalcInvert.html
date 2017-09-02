@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calulator'Light'- iPhone8</title>
+    <link type="text/css" rel="stylesheet" href="newCalcInvert.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+</head>
+
+
+
+<body>
+
+<!--   Parent div that holds all components of calculator together-->
+    <div id="calculator">
+
+                <!--Screen Div-->
+         <form id="inputScreen" name="calc">
+         
+                        <!--Input line where numbers are displayed-->
+             <input id="inputLine" type="text" class="inputLine" name="input">
+             
+         </form>
+
+<!--First row of buttons are contained within this div-->
+        <div class="rowDivs">
+   
+                         
+                        <!--Button switches the color scheme (from white to black)-->
+             <button id="switch" class="buttons" type="button">
+                 <a href="index.html">
+                     <img src=invert.png width="35px" height="35px" position="center">
+                 </a>
+             </button>
+                                        <!--Clears screen-->
+                            <!--Value left blank to reset screen-->
+            <button id="clear" class="colorBtns" type="button" value="Clear" onclick="calc.input.value = ''">AC</button>
+                                        <!--Gives the avg-->
+            <button id="avg" class="colorBtns" type="button" onclick="calc.input.value = average(calc.input.value)">+/</button>
+                                <!--This button will subtract values-->
+            <button id="subtract" class="colorBtns" type="button" value="-" onclick="calc.input.value += '-'">-</button>
+            <br>
+        </div>
+
+       
+        <div class="rowDivs">
+                                                <!--input 7-->
+            <button id="seven" class="buttons" type="button" value="7" onclick="calc.input.value += '7'">7</button>
+                                                <!--input 8 -->
+            <button id="eight" class="buttons" type="button" value="8" onclick="calc.input.value += '8'">8</button>
+                                                <!--input 9-->
+            <button id="nine" class="buttons" type="button" value="9" onclick="calc.input.value += '9'">9</button>
+                                    <!--This button will multiply inputs-->
+            <button id="multiply" class="colorBtns" type="button" value="*" onclick="calc.input.value += '*'">&#215;</button>
+            <br>
+        </div>
+
+       
+        <div class="rowDivs">
+                                                <!--input 4-->
+            <button id="four" class="buttons" type="button" value="4" onclick="calc.input.value += '4'">4</button>
+                                                <!--input 5-->
+            <button id="five" class="buttons" type="button" value="5" onclick="calc.input.value += '5'">5</button>
+                                                <!--input 6-->
+            <button id="six" class="buttons" type="button" value="6" onclick="calc.input.value += '6'">6</button>
+                                            <!--Divide values-->
+            <button id="divide" class="colorBtns" type="button" value="/" onclick="calc.input.value += '/'">&#247;</button>
+            <br>
+        </div>
+
+       
+        <div class="rowDivs">
+                                                <!--input 1-->
+            <button id="one" class="buttons" type="button" value="1" onclick="calc.input.value += '1'">1</button>
+                                                <!--input 2-->
+            <button id="two" class="buttons" type="button" value="2" onclick="calc.input.value += '2'">2</button>
+                                                <!--input 3-->
+            <button id="three" class="buttons" type="button" value="3" onclick="calc.input.value += '3'">3</button>
+                                    <!--This button will add all values-->
+            <button type="button" id="sum" class="colorBtns" value="+" onclick="calc.input.value += '+'">+</button>
+            <br>
+        </div>
+
+       
+        <div class="rowDivs">
+                                                    <!--input 0-->
+            <button id="zero" class="buttons" type="button" value="0" onclick="calc.input.value += '0'">0</button>
+                                                    <!--input decimal-->
+            <button id="decimal" class="buttons" type="button" value="." onclick="calc.input.value += '.'">.</button>
+                                    <!--This button will delete previous input-->
+            <button id="delete" class="buttons" type="button" value="del" onclick="del()" >
+                <img src=bckspace_white.png width="35px" height="35px" position="center">
+            </button>
+                                        <!--This button will equate values-->
+            <button id="equal" type="button" value="equal" onclick="calc.input.value = eval(calc.input.value)">=</button>
+        </div>
+        
+    </div>
+
+
+<script>
+
+     function del () {
+        
+                            /*bckspace will be assigned the value input by user*/
+        var bckspace = document.calc.input.value    
+        /*bckspace is then assigned the substring of its intial input minus one (after deleting last input)*/
+        bckspace = bckspace.substr(0, bckspace.length - 1); 
+          /* the value displayed in the input feild will now equal the result of deleting the last input*/
+        document.calc.input.value= bckspace;
+       
+    };
+    
+
+    function average (input) {
+        
+        
+        let arr = input.split("+"); /*arr is assigned to hold the split elements of what is input*/
+        var i = 0;                  /*for our interations*/
+        var sum= 0;                 /*Will be used to hold sum of elements in array*/
+        
+            for ( var i = 0; i < arr.length; i++){
+
+                let num = eval(arr[i]); 
+                sum += num;
+                console.log(sum); /*for testing*/
+            }
+//        loop above assigns sum the summation of all numbers in the array. eval helps to turn strings into intergers
+       
+        let avg = sum/arr.length;
+        return avg;
+        
+//    returns the average by diving sum by the number of elements on array
+    }
+        
+    
+</script>
+
+
+
+        <h1>The new iPhone 8
+        <img src=calc.png width="135px" height="135px" id="icon">
+        </h1>
+        
+
+
+</body>
+
+</html>
